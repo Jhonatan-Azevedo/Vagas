@@ -1,14 +1,16 @@
 <template>
   <div>
     <div class="card">
-      <div class="card-header bg-dark text-white">Título da vaga</div>
+      <div class="card-header bg-dark text-white">
+        {{ titulo }}
+      </div>
       <div class="card-body">
-        <p>Descrição truncada da vaga...</p>
+        <p>{{ descricao }}</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">
-          Salário: R$ 6.000,00 | Modalidade: Home Office | Tipo: CLT |
-          Publicação: 10/01/2022
+          Salário: R$ {{ salario }} | Modalidade: {{ modalidade }} | Tipo:
+          {{ tipo }} | Publicação: {{ dtPublicacao }}
         </small>
       </div>
     </div>
@@ -18,6 +20,14 @@
 <script>
 export default {
   name: "VagaCard",
+  props: [
+    "titulo",
+    "descricao",
+    "salario",
+    "modalidade",
+    "tipo",
+    "dtPublicacao",
+  ],
 };
 </script>
 
