@@ -3,53 +3,36 @@
     <div class="container py-4">
       <div class="row">
         <div class="col">
-          <div class="h-100 p-5 bg-light border rounded-3">
-            <h2>Pesquisar Vagas</h2>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Título da Vaga</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Pesquise por pavalas chaves"
-                  />
-                  <small class="form-text text-muted"
-                    >Informe palavras que estejam relacionadas ao título que
-                    você procura</small
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <button class="btn btn-outline-dark mt-2">Buscar</button>
-              </div>
-            </div>
-          </div>
+          <PesquisarVaga />
         </div>
       </div>
 
       <div class="row mt-5">
         <div class="col-4">
-          <div class="h-100 p-5 rounded-3 border bg-dark text-white">
-            <p>Vagas abertas</p>
-            <h2>25</h2>
-          </div>
+          <IndicadorDados
+            titulo="Vagas Abertas"
+            indicador="100"
+            bg="bg-dark"
+            color="text-white"
+          />
         </div>
 
         <div class="col-4">
-          <div class="h-100 p-5 rounded-3 border bg-dark text-white">
-            <p>Profissionais cadastrados</p>
-            <h2>125</h2>
-          </div>
+          <IndicadorDados
+            titulo="Profissionais cadastrados"
+            indicador="225"
+            bg="bg-dark"
+            color="text-white"
+          />
         </div>
 
         <div class="col-4">
-          <div class="h-100 p-5 rounded-3 border bg-light text-dark">
-            <p>Visitantes online</p>
-            <h2>15</h2>
-          </div>
+          <IndicadorDados
+            titulo="Visitantes onlines"
+            indicador="25"
+            bg="bg-light"
+            color="text-dark"
+          />
         </div>
       </div>
     </div>
@@ -57,8 +40,14 @@
 </template>
 
 <script>
+import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
+import IndicadorDados from "@/components/comuns/IndicadorDados.vue";
 export default {
   name: "HomeVagas",
+  components: {
+    PesquisarVaga,
+    IndicadorDados,
+  },
 };
 </script>
 
