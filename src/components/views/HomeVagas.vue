@@ -29,7 +29,7 @@
         <div class="col-4">
           <IndicadorDados
             titulo="Visitantes onlines"
-            indicador="25"
+            :indicador="usuariosOnline"
             bg="bg-light"
             color="text-dark"
           />
@@ -44,9 +44,26 @@ import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
 import IndicadorDados from "@/components/comuns/IndicadorDados.vue";
 export default {
   name: "HomeVagas",
+
   components: {
     PesquisarVaga,
     IndicadorDados,
+  },
+
+  data() {
+    return {
+      usuariosOnline: 0,
+    };
+  },
+
+  created() {
+    setInterval(this.getUserOnline, 1000);
+  },
+
+  methods: {
+    getUserOnline() {
+      this.usuariosOnline = Math.floor(Math.random() * 101);
+    },
   },
 };
 </script>
