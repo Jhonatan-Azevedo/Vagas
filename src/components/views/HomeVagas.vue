@@ -8,6 +8,10 @@
       </div>
 
       <div class="row mt-5">
+        <div class="col"><VagaCard /></div>
+      </div>
+
+      <div class="row mt-5">
         <div class="col-4">
           <IndicadorDados
             titulo="Vagas Abertas"
@@ -42,12 +46,14 @@
 <script>
 import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
 import IndicadorDados from "@/components/comuns/IndicadorDados.vue";
+import VagaCard from "@/components/comuns/VagaCard.vue";
 export default {
   name: "HomeVagas",
 
   components: {
     PesquisarVaga,
     IndicadorDados,
+    VagaCard,
   },
 
   data() {
