@@ -84,12 +84,16 @@ export default {
       let vagas = JSON.parse(localStorage.getItem("vagas"));
       if (!vagas) vagas = [];
 
+      let tempoDecorrido = Date.now();
+      let dataAtual = new Date(tempoDecorrido);
+
       let vaga = {
         titulo: this.titulo,
         descricao: this.descricao,
         salario: this.salario,
         modalidade: this.modalidade,
         tipo: this.tipo,
+        publicacao: dataAtual.toISOString(),
       };
 
       vagas.push(vaga);
