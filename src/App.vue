@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TopoPadrao />
-    <ConteudoSistema />
+    <TopoPadrao @navegar="componente = $event" />
+    <ConteudoSistema :caminho="componente" />
   </div>
 </template>
 
@@ -14,6 +14,19 @@ export default {
   components: {
     ConteudoSistema,
     TopoPadrao,
+  },
+
+  data() {
+    return {
+      componente: "Home",
+    };
+  },
+
+  methods: {
+    acao(n1, n2) {
+      let soma = n1 + n2;
+      console.log("chegou: ", soma);
+    },
   },
 };
 </script>
