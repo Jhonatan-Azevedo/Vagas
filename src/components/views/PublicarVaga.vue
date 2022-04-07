@@ -5,8 +5,6 @@
         <h4>Apresente a sua vafa para milhates de profissionais e de graça</h4>
       </div>
     </div>
-    {{ titulo }} | {{ descricao }} | {{ salario }} | {{ modalidade }} |
-    {{ tipo }}
     <div class="row mt-3">
       <div class="col">
         <label class="form-label">Título da vaga</label>

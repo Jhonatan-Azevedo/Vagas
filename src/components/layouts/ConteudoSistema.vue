@@ -5,7 +5,9 @@
     <button class="btn btn-secondary" @click="conteudo = 'publicarVaga'">
       Publicar Vagas
     </button>
-    <component :is="conteudo" />
+    <keep-alive>
+      <component :is="conteudo" />
+    </keep-alive>
   </div>
 </template>
 
