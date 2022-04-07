@@ -10,7 +10,7 @@
       <div class="card-footer">
         <small class="text-muted">
           Salário: R$ {{ salario }} | Modalidade: {{ modalidade }} | Tipo:
-          {{ tipo }} | Publicação: {{ dtPublicacao }}
+          {{ tipo }} | Publicação: {{ publicacao }}
         </small>
       </div>
     </div>
@@ -21,12 +21,36 @@
 export default {
   name: "VagaCard",
   props: {
-    titulo: String,
-    descricao: String,
-    salario: [Number, String],
-    modalidade: String,
-    tipo: String,
-    dtPublicacao: String,
+    titulo: {
+      type: String,
+      required: true,
+      validator(p) {
+        if (p.length < 6) return false;
+        return true;
+      },
+    },
+    descricao: {
+      type: String,
+      default() {
+        return "*".repeat(20);
+      },
+    },
+    salario: {
+      type: [Number, String],
+      required: true,
+    },
+    modalidade: {
+      type: String,
+      required: true,
+    },
+    tipo: {
+      type: String,
+      required: true,
+    },
+    publicacao: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>
