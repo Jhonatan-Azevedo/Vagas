@@ -20,14 +20,14 @@
 <script>
 export default {
   name: "VagaCard",
-  props: [
-    "titulo",
-    "descricao",
-    "salario",
-    "modalidade",
-    "tipo",
-    "dtPublicacao",
-  ],
+  props: {
+    titulo: String,
+    descricao: String,
+    salario: [Number, String],
+    modalidade: String,
+    tipo: String,
+    dtPublicacao: String,
+  },
 };
 </script>
 
