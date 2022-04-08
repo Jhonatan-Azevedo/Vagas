@@ -1,5 +1,6 @@
 <template>
   <div>
+    <VagasFavoritas />
     <TopoPadrao @navegar="componente = $event" />
     <ConteudoSistema :caminho="componente" />
   </div>
@@ -8,12 +9,14 @@
 <script>
 import ConteudoSistema from "@/components/layouts/ConteudoSistema.vue";
 import TopoPadrao from "@/components/layouts/TopoPadrao.vue";
+import VagasFavoritas from "@/components/comuns/VagasFavoritas.vue";
 
 export default {
   name: "App",
   components: {
     ConteudoSistema,
     TopoPadrao,
+    VagasFavoritas,
   },
 
   data() {
