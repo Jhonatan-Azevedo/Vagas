@@ -2,7 +2,7 @@
   <div>
     <VagasFavoritas />
     <TopoPadrao @navegar="componente = $event" />
-    <AlertaMensagem v-if="exibirAlerta">
+    <AlertaMensagem v-if="exibirAlerta" :tipo="alerta.tipo">
       <template v-slot:titulo>
         <h5>{{ alerta.titulo }}</h5>
       </template>
@@ -31,7 +31,7 @@ export default {
     return {
       componente: "Home",
       exibirAlerta: false,
-      alerta: { titulo: "", descricao: "" },
+      alerta: { tipo: "", titulo: "", descricao: "" },
     };
   },
 

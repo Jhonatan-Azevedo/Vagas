@@ -98,13 +98,21 @@ export default {
 
       vagas.push(vaga);
 
-      localStorage.setItem("vagas", JSON.stringify(vagas));
-
-      this.emitter.emit("alerta", {
-        titulo: `Parabéns, vaga cadastrada com sucesso!`,
-        descricao: `Vaga: ${this.titulo}`,
-      });
-      this.resetaFormularioCadastroVaga();
+      if (this.validaFormulario()) {
+        localStorage.setItem("vagas", JSON.stringify(vagas));
+        this.emitter.emit("alerta", {
+          tipo: "sucesso",
+          titulo: `Parabéns, vaga cadastrada com sucesso! :)`,
+          descricao: `Vaga: ${this.titulo}`,
+        });
+        this.resetaFormularioCadastroVaga();
+      } else {
+        this.emitter.emit("alerta", {
+          tipo: "erro",
+          titulo: `Opsss... Não foi possível realizar o cadastro! :(`,
+          descricao: `Preencha todos os campos.`,
+        });
+      }
     },
 
     resetaFormularioCadastroVaga() {
@@ -113,6 +121,17 @@ export default {
       this.salario = "";
       this.modalidade = "";
       this.tipo = "";
+    },
+
+    validaFormulario() {
+      let valido = true;
+      if (this.titulo === "") valido = false;
+      if (this.descricao === "") valido = false;
+      if (this.salario === "") valido = false;
+      if (this.modalidade === "") valido = false;
+      if (this.tipo === "") valido = false;
+
+      return valido;
     },
   },
 };
