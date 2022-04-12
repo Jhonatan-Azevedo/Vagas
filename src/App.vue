@@ -2,7 +2,12 @@
   <div>
     <VagasFavoritas />
     <TopoPadrao @navegar="componente = $event" />
-    <AlertaMensagem v-if="exibirAlerta" />
+    <AlertaMensagem v-if="exibirAlerta">
+      <template v-slot:titulo>
+        <h5>{{ alerta.titulo }}</h5>
+      </template>
+      <p>{{ alerta.descricao }}</p>
+    </AlertaMensagem>
     <ConteudoSistema :caminho="componente" />
   </div>
 </template>
@@ -26,14 +31,14 @@ export default {
     return {
       componente: "Home",
       exibirAlerta: false,
+      alerta: { titulo: "", descricao: "" },
     };
   },
 
   mounted() {
-    this.emitter.on("alerta", () => {
+    this.emitter.on("alerta", (params) => {
+      this.alerta = params;
       this.exibirAlerta = true;
-      alert("apesentar a mensagem de alerta");
-
       setTimeout(() => (this.exibirAlerta = false), 3000);
     });
   },
