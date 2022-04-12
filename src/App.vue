@@ -1,8 +1,8 @@
 <template>
   <div>
-    <AlertaMensagem />
     <VagasFavoritas />
     <TopoPadrao @navegar="componente = $event" />
+    <AlertaMensagem v-if="exibirAlerta" />
     <ConteudoSistema :caminho="componente" />
   </div>
 </template>
@@ -25,15 +25,20 @@ export default {
   data() {
     return {
       componente: "Home",
+      exibirAlerta: false,
     };
   },
 
-  methods: {
-    acao(n1, n2) {
-      let soma = n1 + n2;
-      console.log("chegou: ", soma);
-    },
+  mounted() {
+    this.emitter.on("alerta", () => {
+      this.exibirAlerta = true;
+      alert("apesentar a mensagem de alerta");
+
+      setTimeout(() => (this.exibirAlerta = false), 3000);
+    });
   },
+
+  methods: {},
 };
 </script>
 

@@ -98,8 +98,9 @@ export default {
 
       vagas.push(vaga);
 
-      localStorage.setItem("vagas", JSON.stringify(vagas));
+      // localStorage.setItem("vagas", JSON.stringify(vagas));
 
+      this.emitter.emit("alerta");
       this.resetaFormularioCadastroVaga();
     },
 
