@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AlertaMensagem />
     <VagasFavoritas />
     <TopoPadrao @navegar="componente = $event" />
     <ConteudoSistema :caminho="componente" />
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import AlertaMensagem from "@/components/comuns/AlertaMensagem.vue";
 import ConteudoSistema from "@/components/layouts/ConteudoSistema.vue";
 import TopoPadrao from "@/components/layouts/TopoPadrao.vue";
 import VagasFavoritas from "@/components/comuns/VagasFavoritas.vue";
@@ -14,6 +16,7 @@ import VagasFavoritas from "@/components/comuns/VagasFavoritas.vue";
 export default {
   name: "App",
   components: {
+    AlertaMensagem,
     ConteudoSistema,
     TopoPadrao,
     VagasFavoritas,
