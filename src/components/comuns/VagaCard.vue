@@ -9,11 +9,14 @@
             </div>
             <div>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" />
-                <label class="form-check-label">Favoritar</label>
-                <button class="btn btn-danger" @click="dispararEventoComMitt()">
-                  Teste
-                </button>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  v-model="favoritada"
+                />
+                <label class="form-check-label"
+                  >Favoritar</label
+                >
               </div>
             </div>
           </div>
@@ -35,6 +38,13 @@
 <script>
 export default {
   name: "VagaCard",
+
+  data() {
+    return {
+      favoritada: false,
+    };
+  },
+
   props: {
     titulo: {
       type: String,
@@ -106,11 +116,16 @@ export default {
     },
   },
 
-  methods: {
-    dispararEventoComMitt() {
-      this.emitter.emit("eventoGlobal1", "Teste Captura Evento Parâmetro");
+  watch: {
+    favoritada(newValue) {
+      if (newValue) {
+        return this.emitter.emit("favoritarVaga", this.titulo);
+      }
+      return this.emitter.emit("desfavoritarVaga", this.titulo);
     },
   },
+
+  methods: {},
 };
 </script>
 
