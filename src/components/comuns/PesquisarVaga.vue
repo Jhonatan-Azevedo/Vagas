@@ -9,7 +9,9 @@
             <input
               type="text"
               class="form-control"
+              v-model="titulo"
               placeholder="Pesquise por pavalas chaves. Ex: 'C#', 'java', 'node', 'PHP'"
+              @keyup.enter="pesquisarVaga()"
             />
             <small class="form-text text-muted"
               >Informe palavras que estejam relacionadas ao título que você
@@ -20,7 +22,9 @@
       </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-outline-dark mt-2">Buscar</button>
+          <button class="btn btn-outline-dark mt-2" @click="pesquisarVaga()">
+            Buscar
+          </button>
         </div>
       </div>
     </div>
@@ -30,6 +34,21 @@
 <script>
 export default {
   name: "PesquisarVaga",
+  data() {
+    return {
+      titulo: "",
+    };
+  },
+
+  activated() {
+    this.titulo = "";
+  },
+
+  methods: {
+    pesquisarVaga() {
+      this.emitter.emit("filtarVagas", { titulo: this.titulo });
+    },
+  },
 };
 </script>
 

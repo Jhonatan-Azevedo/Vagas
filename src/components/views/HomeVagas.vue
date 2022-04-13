@@ -1,18 +1,23 @@
 <template>
   <div>
     <div class="container py-4">
+      <!-- Start - PesquisarVaga -->
       <div class="row">
         <div class="col">
           <PesquisarVaga />
         </div>
       </div>
+      <!-- End - PesquisarVaga -->
 
+      <!-- Start - VagaCard -->
       <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
         <div class="col">
           <VagaCard v-bind="vaga" />
         </div>
       </div>
+      <!-- End - VagaCard -->
 
+      <!-- Start - IndicadorDados -->
       <div class="row mt-5">
         <div class="col-4">
           <IndicadorDados
@@ -41,6 +46,7 @@
           />
         </div>
       </div>
+      <!-- End - IndicadorDados -->
     </div>
   </div>
 </template>
@@ -67,6 +73,19 @@ export default {
 
   created() {
     setInterval(this.getUserOnline, 1000);
+  },
+
+  mounted() {
+    this.emitter.on("filtarVagas", (vaga) => {
+      console.log(vaga);
+      const vagas = JSON.parse(localStorage.getItem("vagas"));
+
+      const vagasFiltradas = vagas.filter((reg) =>
+        reg.titulo.toLowerCase().includes(vaga.titulo.toLowerCase())
+      );
+
+      this.vagas = vagasFiltradas;
+    });
   },
 
   activated() {
