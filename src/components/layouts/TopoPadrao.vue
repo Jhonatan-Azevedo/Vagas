@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Vagas</a>
+      <a id="title-nav" class="navbar-brand" href="#">Encontre!</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -42,4 +42,20 @@ export default {
 </script>
 
 <style>
+nav {
+  background-color: #0f1d2b;
+}
+
+#title-nav {
+  font-family: "Bebas Neue", cursive;
+  font-size: 32px;
+}
+
+.nav-link {
+  color: #f5f6ee !important;
+}
+
+.nav-link:hover {
+  color: #cfcfcf !important;
+}
 </style>

@@ -47,4 +47,14 @@ export default {
 </script>
 
 <style>
+#app {
+  overflow-x: hidden;
+}
+.cores {
+  background: #0f1d2b;
+  background: #17456b;
+  background: #419fb7;
+  background: #f5f6ee;
+  background: #ffb000;
+}
 </style>
