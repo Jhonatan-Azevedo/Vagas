@@ -6,7 +6,6 @@
       <template v-slot:titulo>
         <h5>{{ alerta.titulo }}</h5>
       </template>
-      <p>{{ alerta.descricao }}</p>
     </AlertaMensagem>
     <ConteudoSistema :caminho="componente" />
   </div>

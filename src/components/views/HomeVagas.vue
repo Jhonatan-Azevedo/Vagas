@@ -9,13 +9,9 @@
       </div>
       <!-- End - PesquisarVaga -->
 
-      <!-- Start - VagaCard -->
-      <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
-        <div class="col">
-          <VagaCard v-bind="vaga" />
-        </div>
-      </div>
-      <!-- End - VagaCard -->
+      <ListaVagas>
+        <p>Conteudo Subistituido</p>
+      </ListaVagas>
 
       <!-- Start - IndicadorDados -->
       <div class="row mt-5">
@@ -52,44 +48,27 @@
 </template>
 
 <script>
-import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
 import IndicadorDados from "@/components/comuns/IndicadorDados.vue";
-import VagaCard from "@/components/comuns/VagaCard.vue";
+import ListaVagas from "@/components/comuns/ListaVagas.vue";
+import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
+
 export default {
   name: "HomeVagas",
 
   components: {
-    PesquisarVaga,
     IndicadorDados,
-    VagaCard,
+    ListaVagas,
+    PesquisarVaga,
   },
 
   data() {
     return {
       usuariosOnline: 0,
-      vagas: [],
     };
   },
 
   created() {
     setInterval(this.getUserOnline, 1000);
-  },
-
-  mounted() {
-    this.emitter.on("filtarVagas", (vaga) => {
-      console.log(vaga);
-      const vagas = JSON.parse(localStorage.getItem("vagas"));
-
-      const vagasFiltradas = vagas.filter((reg) =>
-        reg.titulo.toLowerCase().includes(vaga.titulo.toLowerCase())
-      );
-
-      this.vagas = vagasFiltradas;
-    });
-  },
-
-  activated() {
-    this.vagas = JSON.parse(localStorage.getItem("vagas"));
   },
 
   methods: {

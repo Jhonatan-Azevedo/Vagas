@@ -1,10 +1,8 @@
 <template>
-  <div :class="estiloAlerta">
+  <div :class="estiloAlerta" class="container text-center">
     <slot name="titulo">
       <h5>Titulo da mensagem de feedback</h5>
     </slot>
-    <hr />
-    <slot><p>mensagem de feedback</p></slot>
   </div>
 </template>
 
@@ -20,6 +18,7 @@ export default {
     };
   },
   props: { tipo: String },
+
   computed: {
     estiloAlerta() {
       return this.estiloAlertaObj[this.tipo];
