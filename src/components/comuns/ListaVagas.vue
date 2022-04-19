@@ -1,14 +1,12 @@
 <template>
   <section>
-    <slot >
-      <!-- Start - VagaCard -->
-      <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
-        <div class="col">
-          <VagaCard v-bind="vaga" />
-        </div>
+    <!-- Start - VagaCard -->
+    <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
+      <div class="col">
+        <VagaCard v-bind="vaga" />
       </div>
-      <!-- End - VagaCard -->
-    </slot>
+    </div>
+    <!-- End - VagaCard -->
   </section>
 </template>
 

@@ -9,10 +9,7 @@
       </div>
       <!-- End - PesquisarVaga -->
 
-      <ListaVagas>
-        <p>Conteudo Subistituido</p>
-      </ListaVagas>
-
+      <ListaVagas />
       <!-- Start - IndicadorDados -->
       <div class="row mt-5">
         <div class="col-4">
