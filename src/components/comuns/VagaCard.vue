@@ -8,16 +8,21 @@
               {{ titulo }}
             </div>
             <div>
-              <div class="form-check form-switch">
+              <button
+                type="button"
+                class="btn btn-danger"
+                @click="alterarIcone()"
+              >
+                <i :class="estilo"></i>
+              </button>
+              <!-- <div class="form-check form-switch">
                 <input
                   class="form-check-input"
                   type="checkbox"
                   v-model="favoritada"
                 />
-                <label class="form-check-label"
-                  >Favoritar</label
-                >
-              </div>
+                <label class="form-check-label">Favoritar</label>
+              </div> -->
             </div>
           </div>
         </div>
@@ -42,6 +47,7 @@ export default {
   data() {
     return {
       favoritada: false,
+      estilo: "bi bi-heart",
     };
   },
 
@@ -125,9 +131,22 @@ export default {
     },
   },
 
-  methods: {},
+  methods: {
+    alterarIcone() {
+      this.favoritada = !this.favoritada;
+
+      if (this.favoritada) {
+        return (this.estilo = "bi bi-heart-fill");
+      }
+
+      return (this.estilo = "bi bi-heart");
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+.bg-dark {
+  background: #0f1d2b !important;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="divVagasFavoritas">
-      <button
+      <!-- <button
         class="btn btn-primary"
         type="button"
         data-bs-toggle="offcanvas"
@@ -9,7 +9,7 @@
         aria-controls="offcanvasTop"
       >
         Vagas Favoritas
-      </button>
+      </button> -->
     </div>
     <div
       class="offcanvas offcanvas-end"

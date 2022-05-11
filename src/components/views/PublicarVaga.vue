@@ -59,7 +59,7 @@
     <div class="row mt-3">
       <div class="col">
         <button type="submit" class="btn btn-primary" @click="salvarVaga()">
-          Cadastrar
+          <i class="bi bi-box-arrow-down"></i> Cadastrar
         </button>
       </div>
     </div>
@@ -101,16 +101,15 @@ export default {
       if (this.validaFormulario()) {
         localStorage.setItem("vagas", JSON.stringify(vagas));
         this.emitter.emit("alerta", {
-          tipo: "sucesso",
-          titulo: `Parabéns, vaga cadastrada com sucesso! :)`,
-          descricao: `Vaga: ${this.titulo}`,
+          icon: "success",
+          text: `Parabéns, vaga cadastrada com sucesso! :) <br /> Vaga: ${this.titulo}`,
+          descricao: ``,
         });
         this.resetaFormularioCadastroVaga();
       } else {
         this.emitter.emit("alerta", {
-          tipo: "erro",
-          titulo: `Opsss... Não foi possível realizar o cadastro! :(`,
-          descricao: `Preencha todos os campos.`,
+          icon: "error",
+          text: `Opsss... Não foi possível realizar o cadastro! :( <br /> Preencha todos os campos.`,
         });
       }
     },
@@ -137,5 +136,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.btn-primary {
+  background: #17456b !important;
+  border-color: #17456b !important;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0f1d2b !important;
+  border-color: #0f1d2b !important;
+}
 </style>

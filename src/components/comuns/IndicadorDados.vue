@@ -19,5 +19,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+.bg-dark {
+  background: #0f1d2b !important;
+}
 </style>
