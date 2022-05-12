@@ -3,7 +3,7 @@
     <!-- Start - VagaCard -->
     <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
       <div class="col">
-        <VagaCard v-bind="vaga" />
+        <VagaCard v-bind="vaga" :index="index" />
       </div>
     </div>
     <!-- End - VagaCard -->
@@ -26,7 +26,6 @@ export default {
 
   mounted() {
     this.emitter.on("filtarVagas", (vaga) => {
-      console.log(vaga);
       const vagas = JSON.parse(localStorage.getItem("vagas"));
 
       const vagasFiltradas = vagas.filter((reg) =>

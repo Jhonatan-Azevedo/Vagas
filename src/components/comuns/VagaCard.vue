@@ -11,18 +11,10 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="alterarIcone()"
+                @click="favoritarVaga(index)"
               >
                 <i :class="estilo"></i>
               </button>
-              <!-- <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  v-model="favoritada"
-                />
-                <label class="form-check-label">Favoritar</label>
-              </div> -->
             </div>
           </div>
         </div>
@@ -46,7 +38,7 @@ export default {
 
   data() {
     return {
-      favoritada: false,
+      favoritadaIcon: false,
       estilo: "bi bi-heart",
     };
   },
@@ -80,6 +72,14 @@ export default {
     },
     publicacao: {
       type: String,
+      required: true,
+    },
+    favoritada: {
+      type: Boolean,
+      required: true,
+    },
+    index: {
+      type: Number,
       required: true,
     },
   },
@@ -122,6 +122,11 @@ export default {
     },
   },
 
+  mounted() {
+    this.favoritadaIcon = this.favoritada;
+    this.alterarIcon();
+  },
+
   watch: {
     favoritada(newValue) {
       if (newValue) {
@@ -132,10 +137,18 @@ export default {
   },
 
   methods: {
-    alterarIcone() {
-      this.favoritada = !this.favoritada;
+    favoritarVaga(index) {
+      this.favoritadaIcon = !this.favoritadaIcon;
+      const vagas = JSON.parse(localStorage.getItem("vagas"));
 
-      if (this.favoritada) {
+      vagas[index].favoritada = this.favoritadaIcon;
+
+      localStorage.setItem("vagas", JSON.stringify(vagas));
+      this.alterarIcon();
+    },
+
+    alterarIcon() {
+      if (this.favoritadaIcon) {
         return (this.estilo = "bi bi-heart-fill");
       }
 

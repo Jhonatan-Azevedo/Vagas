@@ -94,6 +94,7 @@ export default {
         modalidade: this.modalidade,
         tipo: this.tipo,
         publicacao: dataAtual.toISOString(),
+        favoritada: false,
       };
 
       vagas.push(vaga);

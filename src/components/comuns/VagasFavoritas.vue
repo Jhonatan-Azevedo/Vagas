@@ -1,16 +1,5 @@
 <template>
   <div>
-    <div class="divVagasFavoritas">
-      <!-- <button
-        class="btn btn-primary"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasTop"
-        aria-controls="offcanvasTop"
-      >
-        Vagas Favoritas
-      </button> -->
-    </div>
     <div
       class="offcanvas offcanvas-end"
       tabindex="-1"
@@ -63,10 +52,4 @@ export default {
 </script>
 
 <style  scoped>
-.divVagasFavoritas {
-  position: absolute;
-  z-index: 1;
-  top: 60px;
-  right: 0px;
-}
 </style>

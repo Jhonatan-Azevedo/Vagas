@@ -1,7 +1,7 @@
 <template>
   <div>
     <VagasFavoritas />
-    <TopoPadrao @navegar="componente = $event" />
+    <TopoPadrao @navegar="componente = $event" class="fixed-top" />
     <ConteudoSistema :caminho="componente" />
   </div>
 </template>
