@@ -128,11 +128,8 @@ export default {
   },
 
   watch: {
-    favoritada(newValue) {
-      if (newValue) {
-        return this.emitter.emit("favoritarVaga", this.titulo);
-      }
-      return this.emitter.emit("desfavoritarVaga", this.titulo);
+    favoritadaIcon() {
+      return this.emitter.emit("favoritarVaga");
     },
   },
 

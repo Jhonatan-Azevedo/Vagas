@@ -22,7 +22,26 @@
             v-for="(vaga, index) in vagas"
             :key="index"
           >
-            {{ vaga }}
+            <button
+              class="btn"
+              type="button"
+              data-bs-toggle="collapse"
+              :data-bs-target="`#collapseExample-${index}`"
+              aria-expanded="false"
+              :aria-controls="`collapseExample-${index}`"
+              @click="isBusy = !isBusy"
+            >
+              <i class="bi bi-caret-right-fill" v-if="isBusy"></i
+              ><i class="bi bi-caret-down-fill" v-else></i> {{ vaga.titulo }}
+            </button>
+            <div class="collapse" :id="`collapseExample-${index}`">
+              <hr />
+              <span>Salário: {{ vaga.salario }}</span>
+              <br />
+              <span>Modalidade: {{ vaga.modalidade }}</span>
+              <br />
+              <span>Tipo: {{ vaga.tipo }}</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -35,17 +54,14 @@ export default {
   name: "VagasFavoritas",
   data() {
     return {
+      isBusy: true,
       vagas: [],
     };
   },
   mounted() {
-    this.emitter.on("favoritarVaga", (titulo) => {
-      this.vagas.push(titulo);
-    });
-
-    this.emitter.on("desfavoritarVaga", (titulo) => {
-      let indiceArray = this.vagas.indexOf(titulo);
-      if (indiceArray !== -1) this.vagas.splice(indiceArray, 1);
+    this.emitter.on("favoritarVaga", () => {
+      let vagasDB = JSON.parse(localStorage.getItem("vagas"));
+      this.vagas = vagasDB.filter((item) => item.favoritada);
     });
   },
 };

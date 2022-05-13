@@ -7,20 +7,29 @@
       </div>
     </div>
     <!-- End - VagaCard -->
+
+    <PaginacaoVagasVue
+      class="w-100 bg-light"
+      @paginacao="paginacao($event)"
+      :listVagas="vagasTotal"
+    />
   </section>
 </template>
 
 <script>
+import PaginacaoVagasVue from "./PaginacaoVagas.vue";
 import VagaCard from "@/components/comuns/VagaCard.vue";
 
 export default {
   name: "ListaVagas",
   components: {
+    PaginacaoVagasVue,
     VagaCard,
   },
   data() {
     return {
       vagas: [],
+      vagasTotal: [],
     };
   },
 
@@ -31,12 +40,19 @@ export default {
       const vagasFiltradas = vagas.filter((reg) =>
         reg.titulo.toLowerCase().includes(vaga.titulo.toLowerCase())
       );
-      this.vagas = vagasFiltradas;
+      this.vagasTotal = vagasFiltradas;
     });
   },
 
   activated() {
-    this.vagas = JSON.parse(localStorage.getItem("vagas"));
+    this.vagas = JSON.parse(localStorage.getItem("vagas")).slice(0, 3);
+    this.vagasTotal = JSON.parse(localStorage.getItem("vagas"));
+  },
+
+  methods: {
+    paginacao(vagas) {
+      this.vagas = vagas;
+    },
   },
 };
 </script>
