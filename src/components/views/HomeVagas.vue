@@ -73,6 +73,7 @@ export default {
       usuariosOnline: 0,
       vagas: [
         {
+          id: 1,
           titulo: "Analista Programador PHP Pleno",
           descricao:
             "Profissional com conhecimentos em PHP, Laravel e MySQL. Necessário 3 anos de experiências. Atuará na manutenção de sistemas legados da empresa.",
@@ -83,6 +84,7 @@ export default {
           favoritada: false,
         },
         {
+          id: 2,
           titulo: "Programador JavaScript Angular",
           descricao:
             "Profissional com conhecimentos avançados em JavaScript e Angular.",
@@ -93,6 +95,7 @@ export default {
           favoritada: true,
         },
         {
+          id: 3,
           titulo: "Programador JavaScript Vue",
           descricao:
             "Profissional com conhecimentos avançados em JavaScript e Vue.",
@@ -103,6 +106,7 @@ export default {
           favoritada: false,
         },
         {
+          id: 4,
           titulo: "Analista de Banco de Dados Sênior",
           descricao:
             "Domínio dos bancos de dados SQL Server, Oracle, Postgre e MySQL",
@@ -113,6 +117,7 @@ export default {
           favoritada: false,
         },
         {
+          id: 5,
           titulo: "Programador Web Júnior",
           descricao:
             "Conhecimentos básicos em HTML, CSS, JavaScript, Bootstrap, PHP e MySQL",

@@ -11,7 +11,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="favoritarVaga(index)"
+                @click="favoritarVaga(id)"
               >
                 <i :class="estilo"></i>
               </button>
@@ -57,6 +57,10 @@ export default {
       default() {
         return "*".repeat(20);
       },
+    },
+    id: {
+      type: Number,
+      required: true,
     },
     salario: {
       type: [Number, String],
@@ -122,29 +126,44 @@ export default {
     },
   },
 
+  updated() {},
+
+  activated() {
+    this.startComponent();
+    console.log(this.favoritada);
+  },
+
   mounted() {
-    this.favoritadaIcon = this.favoritada;
-    this.alterarIcon();
+    this.startComponent();
   },
 
   watch: {
-    favoritadaIcon() {
-      return this.emitter.emit("favoritarVaga");
+    id() {
+      this.startComponent();
     },
   },
 
   methods: {
-    favoritarVaga(index) {
+    startComponent() {
+      this.favoritadaIcon = this.favoritada;
+      this.alterarIcon();
+    },
+
+    favoritarVaga(id) {
       this.favoritadaIcon = !this.favoritadaIcon;
       const vagas = JSON.parse(localStorage.getItem("vagas"));
-
-      vagas[index].favoritada = this.favoritadaIcon;
+      vagas.map((vaga) => {
+        if (vaga.id === id) {
+          vaga.favoritada = this.favoritadaIcon;
+        }
+      });
 
       localStorage.setItem("vagas", JSON.stringify(vagas));
       this.alterarIcon();
     },
 
     alterarIcon() {
+      this.emitter.emit("favoritarVaga");
       if (this.favoritadaIcon) {
         return (this.estilo = "bi bi-heart-fill");
       }

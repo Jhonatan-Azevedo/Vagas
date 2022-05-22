@@ -8,6 +8,7 @@
     >
       <div class="offcanvas-header">
         <h5 id="offcanvasTopLabel">Vagas Favoritas</h5>
+
         <button
           type="button"
           class="btn-close text-reset"
@@ -15,8 +16,9 @@
           aria-label="Close"
         ></button>
       </div>
+
       <div class="offcanvas-body">
-        <ul class="list-group">
+        <ul class="list-group" v-if="vagas.length > 0">
           <li
             class="list-group-item"
             v-for="(vaga, index) in vagas"
@@ -44,6 +46,10 @@
             </div>
           </li>
         </ul>
+
+        <div v-else class="w-100 text-center">
+          Nenhuma vaga favoritada <i class="bi bi-heartbreak-fill"></i>
+        </div>
       </div>
     </div>
   </div>

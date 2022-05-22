@@ -1,9 +1,9 @@
 <template>
   <section>
     <!-- Start - VagaCard -->
-    <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
+    <div class="row mt-5" v-for="vaga in vagas" :key="vaga.id">
       <div class="col">
-        <VagaCard v-bind="vaga" :index="index" />
+        <VagaCard v-bind="vaga" :index="vaga.id" />
       </div>
     </div>
     <!-- End - VagaCard -->

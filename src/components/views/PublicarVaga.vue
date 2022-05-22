@@ -81,13 +81,20 @@ export default {
 
   methods: {
     salvarVaga() {
+      let id;
       let vagas = JSON.parse(localStorage.getItem("vagas"));
-      if (!vagas) vagas = [];
+      if (!vagas) {
+        vagas = [];
+        id = 1;
+      } else {
+        id = vagas[vagas.length - 1].id + 1;
+      }
 
       let tempoDecorrido = Date.now();
       let dataAtual = new Date(tempoDecorrido);
 
       let vaga = {
+        id,
         titulo: this.titulo,
         descricao: this.descricao,
         salario: this.salario,
