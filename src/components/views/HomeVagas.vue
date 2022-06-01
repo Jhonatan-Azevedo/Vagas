@@ -21,8 +21,8 @@
         <div class="row mt-5">
           <div class="col-4">
             <IndicadorDados
-              titulo="Vagas Abertas"
-              indicador="100"
+              titulo="Numero de vagas já cadastradas"
+              :indicador="indicadorVagas"
               bg="bg-dark"
               color="text-white"
             />
@@ -31,7 +31,7 @@
           <div class="col-4">
             <IndicadorDados
               titulo="Profissionais cadastrados"
-              indicador="225"
+              indicador="219"
               bg="bg-dark"
               color="text-white"
             />
@@ -128,6 +128,8 @@ export default {
           favoritada: false,
         },
       ],
+
+      indicadorVagas: 342,
     };
   },
 
@@ -135,8 +137,14 @@ export default {
     setInterval(this.getUserOnline, 2000);
   },
 
+  activated() {
+    let vagas = JSON.parse(localStorage.getItem("vagas"));
+    this.indicadorVagas = 342 + vagas.length;
+  },
+
   mounted() {
     let vagas = JSON.parse(localStorage.getItem("vagas"));
+    this.indicadorVagas = 342 + vagas.length;
     if (!vagas) {
       vagas = this.vagas;
       localStorage.setItem("vagas", JSON.stringify(vagas));
