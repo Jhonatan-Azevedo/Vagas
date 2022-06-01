@@ -3,7 +3,11 @@
     <nav class="w-100 my-3 bg-light d-flex justify-content-center">
       <ul class="pagination">
         <li class="page-item">
-          <button type="button" class="btn btn-outline-secondary">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            @click="this.atualizarLista(1)"
+          >
             <span aria-hidden="true">&laquo;</span>
           </button>
         </li>
@@ -21,7 +25,11 @@
           </button>
         </li>
         <li class="page-item">
-          <button type="button" class="btn btn-outline-secondary">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            @click="this.atualizarLista(numeroPaginacao.length)"
+          >
             <span aria-hidden="true">&raquo;</span>
           </button>
         </li>
@@ -38,16 +46,12 @@ export default {
     return {
       vagas: [],
       numeroPaginacao: 0,
+      vlrAnteriosatualizarPagina: 0,
+      listVagas: [],
     };
   },
 
-  props: { listVagas: Array },
-
-  watch: {
-    listVagas(newValue) {
-      console.log("novo: ", newValue);
-    },
-  },
+  watch: {},
 
   activated() {
     let count = 0;
@@ -66,6 +70,12 @@ export default {
     }
   },
 
+  mounted() {
+    this.emitter.on("atualizarPag", (pag) => {
+      this.atualizarLista(pag);
+    });
+  },
+
   methods: {
     paginacao(items, pagAtual, limitItens) {
       let result = [];
@@ -82,12 +92,18 @@ export default {
         }
       }
 
-      return result;
+      return { result, pagAtual };
     },
 
     proximaPagina(e) {
       let proximaPage = e.target.textContent || 1;
+
       this.$emit("paginacao", this.paginacao(this.listVagas, proximaPage, 3));
+    },
+
+    atualizarLista(pag) {
+      this.listVagas = JSON.parse(localStorage.getItem("vagas"));
+      this.$emit("paginacao", this.paginacao(this.listVagas, pag, 3));
     },
   },
 };

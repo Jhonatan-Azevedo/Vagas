@@ -1,5 +1,7 @@
 <template>
-  <footer class="border-top w-100 p-3 text-center">
+  <footer
+    class="border-top w-100 d-flex justify-content-center align-items-center"
+  >
     <a
       class="text-decoration-none link-secondary"
       href="https://github.com/Jhonatan-Azevedo"
@@ -24,6 +26,7 @@ export default {
 
 <style scoped>
 footer {
+  height: 50px !important;
   background-color: #0f1d2b;
 }
 </style>

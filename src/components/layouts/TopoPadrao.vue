@@ -1,7 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a id="title-nav" class="navbar-brand" href="#">Encontre!</a>
+      <a
+        id="title-nav"
+        class="navbar-brand"
+        href="#"
+        @click="navegarPara('Home')"
+        >Encontre!</a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -14,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#" @click="navegarPara('Home')"
               >Home <i class="bi bi-house-door-fill"></i
@@ -23,6 +29,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')"
               >Publicar Vaga <i class="bi bi-briefcase-fill"></i
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click="navegarPara('DashBoard')"
+              >Dashboard <i class="bi bi-briefcase-fill"></i
             ></a>
           </li>
           <li class="nav-item">

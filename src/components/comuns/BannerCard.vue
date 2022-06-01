@@ -4,9 +4,16 @@
       id="fundo"
       class="d-flex flex-column justify-content-center align-items-end px-5"
     >
-      <h3 class="text-light">Aqui na Encontre, sempre temos as</h3>
-      <h1 class="text-light fw-bold">melhores opotunidades do mercado!</h1>
+      <h1 class="text-right">
+        <span class="h3 m-0 text-end text-light d-block"
+          >Aqui na Encontre, sempre temos as</span
+        >
+        <span class="h1 m-0 text-light fw-bold"
+          >MELHORES OPORTUNIDADES DO MERCADO!</span
+        >
+      </h1>
       <div class="small text-secondary">Atuando no desde 2015</div>
+      <!-- melhores opotunidades do mercado! -->
     </div>
   </section>
 </template>
