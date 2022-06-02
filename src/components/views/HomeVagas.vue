@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="">
+    <div class="v-scroll-reveal">
       <div class="row">
         <div class="col">
           <BannerCard />
@@ -144,11 +144,12 @@ export default {
 
   mounted() {
     let vagas = JSON.parse(localStorage.getItem("vagas"));
-    this.indicadorVagas = 342 + vagas.length;
     if (!vagas) {
       vagas = this.vagas;
       localStorage.setItem("vagas", JSON.stringify(vagas));
     }
+    this.indicadorVagas = 342 + vagas.length;
+    this.emitter.emit("atualizarPag", 1);
   },
 
   methods: {

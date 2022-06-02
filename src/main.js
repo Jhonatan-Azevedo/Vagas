@@ -12,4 +12,8 @@ const app = createApp(App)
 app.use(VueSweetalert2);
 app.config.globalProperties.emitter = emitter
 
+
+
+ 
+
 app.mount('#app')

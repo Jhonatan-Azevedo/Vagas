@@ -66,7 +66,7 @@ export default {
   },
   mounted() {
     this.emitter.on("favoritarVaga", () => {
-      let vagasDB = JSON.parse(localStorage.getItem("vagas"));
+      let vagasDB = JSON.parse(localStorage.getItem("vagas")).reverse()   ;
       this.vagas = vagasDB.filter((item) => item.favoritada);
     });
   },

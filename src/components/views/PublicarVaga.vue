@@ -41,7 +41,7 @@
 
         <div class="mx-1">
           <label class="form-label">Modalidade</label>
-          <select class="form-select" v-model="modalidade">
+          <select class="form-select custom-color-input" v-model="modalidade">
             <option value="" disabled selected>Selecione a modalidade</option>
             <option value="1">Home Office</option>
             <option value="2">Presencial</option>
@@ -54,15 +54,49 @@
 
         <div class="mx-1">
           <label class="form-label">Tipo</label>
-          <select class="form-select" v-model="tipo">
-            <option value="" disabled selected>Selecione o tipo</option>
-            <option value="1">CLT</option>
-            <option value="2">PJ</option>
-          </select>
+          <div class="form-check mx-1 d-flex">
+            <div class="w-50">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="tipoVaga"
+                value="1"
+                v-model="tipo"
+              />
+              <label class="form-check-label"> CLT </label>
+            </div>
+            <div class="w-50">
+              <input
+                class="form-check-input custom-color-input"
+                type="radio"
+                name="tipoVaga"
+                value="2"
+                v-model="tipo"
+              />
+              <label class="form-check-label"> PJ </label>
+            </div>
+          </div>
           <div class="form-text">Informe o tipo de contratação.</div>
         </div>
       </div>
 
+      <div class="row mt-3">
+        <div class="col">
+          <label class="form-label">Nome da empresa:</label>
+          <input type="text" class="form-control" v-model="nomeEmpresa" />
+          <div class="form-text">Por exemplo: Encontre vagas LTDA.</div>
+        </div>
+        <div class="col">
+          <label class="form-label">Upload do logo da empresa:</label>
+          <input
+            id="uploadfoto"
+            class="form-control"
+            type="file"
+            @change="uploadFoto($event)"
+          />
+          <div class="form-text">Não obrigatório.</div>
+        </div>
+      </div>
       <div class="row mt-3">
         <div class="col">
           <button type="submit" class="btn btn-primary" @click="salvarVaga()">
@@ -84,7 +118,19 @@ export default {
       salario: "",
       modalidade: "",
       tipo: "",
+      nomeEmpresa: "",
+      fotoEmpresa: "",
     };
+  },
+
+  watch: {
+    tipo(newValue) {
+      console.log(newValue);
+    },
+  },
+
+  activated() {
+    this.resetaFormularioCadastroVaga();
   },
 
   methods: {
@@ -110,6 +156,8 @@ export default {
         tipo: this.tipo,
         publicacao: dataAtual.toISOString(),
         favoritada: false,
+        nomeEmpresa: this.nomeEmpresa,
+        fotoEmpresa: this.fotoEmpresa,
       };
 
       vagas.push(vaga);
@@ -136,6 +184,9 @@ export default {
       this.salario = "";
       this.modalidade = "";
       this.tipo = "";
+      this.nomeEmpresa = "";
+      this.fotoEmpresa = "";
+      document.querySelector("#uploadfoto").value = "";
     },
 
     validaFormulario() {
@@ -145,8 +196,20 @@ export default {
       if (this.salario === "") valido = false;
       if (this.modalidade === "") valido = false;
       if (this.tipo === "") valido = false;
+      if (this.nomeEmpresa === "") valido = false;
 
       return valido;
+    },
+
+    uploadFoto(event) {
+      let files = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.fotoEmpresa = e.target.result;
+      };
+
+      reader.readAsDataURL(files);
     },
   },
 };

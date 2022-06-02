@@ -33,8 +33,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click="navegarPara('DashBoard')"
-              >Dashboard <i class="bi bi-briefcase-fill"></i
-            ></a>
+              >Dashboard <i class="bi bi-bar-chart-line-fill"></i></a>
           </li>
           <li class="nav-item">
             <a

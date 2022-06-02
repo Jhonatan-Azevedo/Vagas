@@ -48,6 +48,7 @@ export default {
       numeroPaginacao: 0,
       vlrAnteriosatualizarPagina: 0,
       listVagas: [],
+      isReverse: true,
     };
   },
 
@@ -55,9 +56,12 @@ export default {
 
   activated() {
     let count = 0;
+    this.emitter.on("atualizarPag", (pag) => {
+      this.atualizarLista(pag);
+    });
+
     this.vagas = JSON.parse(localStorage.getItem("vagas"));
     this.vagas.forEach(() => {
-      console.log();
       count++;
     });
 
@@ -71,8 +75,9 @@ export default {
   },
 
   mounted() {
-    this.emitter.on("atualizarPag", (pag) => {
-      this.atualizarLista(pag);
+    this.emitter.on("orderList", (bool) => {
+      this.isReverse = bool;
+      this.atualizarLista(1);
     });
   },
 
@@ -97,12 +102,22 @@ export default {
 
     proximaPagina(e) {
       let proximaPage = e.target.textContent || 1;
-
+      if (this.isReverse) {
+        this.listVagas = JSON.parse(localStorage.getItem("vagas")).reverse();
+      } else {
+        this.listVagas = JSON.parse(localStorage.getItem("vagas"));
+      }
       this.$emit("paginacao", this.paginacao(this.listVagas, proximaPage, 3));
     },
 
     atualizarLista(pag) {
-      this.listVagas = JSON.parse(localStorage.getItem("vagas"));
+      if (this.isReverse) {
+        this.listVagas = JSON.parse(localStorage.getItem("vagas")).reverse();
+      } else {
+        this.listVagas = JSON.parse(localStorage.getItem("vagas"));
+      }
+
+      console.log(this.listVagas);
       this.$emit("paginacao", this.paginacao(this.listVagas, pag, 3));
     },
   },
