@@ -32,6 +32,9 @@ export default {
     this.emitter.on("alerta", (params) => {
       this.sweetAlert(params.icon, params.text);
     });
+    this.emitter.on("publicarVaga", () => {
+      this.componente = "PublicarVaga";
+    });
   },
 
   methods: {

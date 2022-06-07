@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <h4>
-            Apresente a sua vaga para milhares de profissionais e de graça
+            Apresente a sua vaga para milhares de profissionais e de graça!
           </h4>
         </div>
       </div>
