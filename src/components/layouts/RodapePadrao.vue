@@ -2,7 +2,7 @@
   <footer
     class="
       border-top
-      px-5
+      p-3
       w-100
       d-flex
       justify-content-between
@@ -46,5 +46,11 @@ export default {
 footer {
   height: 50px !important;
   background-color: #0f1d2b;
+}
+
+@media screen and (max-width: 580px) {
+  footer {
+    padding: 15% !important;
+  }
 }
 </style>

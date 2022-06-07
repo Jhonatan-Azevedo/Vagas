@@ -1,6 +1,6 @@
 <template >
   <section class="w-100 d-flex justify-content-center align-items-center">
-    <div class="corpo-publicar-vagas bg-light container p-5 rounded">
+    <div class="corpo-publicar-vagas bg-light container-fluid p-5 rounded m-5">
       <div class="row">
         <div class="col">
           <h4>
@@ -237,14 +237,15 @@ section {
   width: 33%;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 680px) {
   section {
-    display: block;
-    margin-top: 10%;
+    /* display: block !important; */
+    margin-top: 40vh;
+    margin-bottom: 70vh;
   }
 
   corpo-publicar-vagas {
-    width: 98%;
+    width: 98% !important;
   }
 
   .campo-select {

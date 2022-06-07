@@ -18,8 +18,8 @@
 
         <ListaVagas />
         <!-- Start - IndicadorDados -->
-        <div class="row mt-5">
-          <div class="col-4">
+        <div id="indicadores" class="d-flex justify-content-evenly mt-5">
+          <div class="m-2">
             <IndicadorDados
               titulo="Numero de vagas já cadastradas"
               :indicador="indicadorVagas"
@@ -28,7 +28,7 @@
             />
           </div>
 
-          <div class="col-4">
+          <div class="m-2">
             <IndicadorDados
               titulo="Profissionais cadastrados"
               indicador="219"
@@ -37,7 +37,7 @@
             />
           </div>
 
-          <div class="col-4">
+          <div class="m-2">
             <IndicadorDados
               titulo="Visitantes onlines"
               :indicador="usuariosOnline"
@@ -160,5 +160,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+@media screen and (max-width: 580px) {
+  #indicadores {
+    flex-direction: column !important;
+  }
+}
 </style>

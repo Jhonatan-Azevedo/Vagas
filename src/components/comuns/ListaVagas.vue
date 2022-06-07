@@ -20,7 +20,7 @@
     <div class="row animate__bounceIn" v-for="vaga in vagas" :key="vaga.id">
       <div class="col">
         <div class="card">
-          <div class="card-header bg-dark text-white">
+          <div class="card-header bg-blue-dark text-white">
             <div class="row">
               <div class="col d-flex justify-content-between">
                 <div>
@@ -167,5 +167,9 @@ export default {
 <style>
 a {
   cursor: pointer;
+}
+
+.bg-blue-dark {
+  background-color: #0f1d2b !important;
 }
 </style>

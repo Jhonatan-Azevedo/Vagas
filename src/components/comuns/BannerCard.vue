@@ -47,7 +47,7 @@
                 <h2 class="text-light px-5 w-100 text-center">
                   <span class="m-0 text-light d-block">
                     Publique agora sua vaga onde <br />
-                    milhares de profissionais podera acessala!
+                    milhares de profissionais poderam ver!
                   </span>
                 </h2>
                 <hr />
@@ -79,7 +79,11 @@ export default {
 
   mounted() {
     this.animateBanner();
+    this.estilo = "banner1";
+    this.estiloFundo = "fundoBanner1";
   },
+
+  activated() {},
 
   methods: {
     animateBanner() {
@@ -159,6 +163,7 @@ export default {
   background-image: url("./../../assets/banner_principal.jpg");
   background-size: cover;
   background-position: center;
+  animation: showBanner 1s linear;
 }
 
 #banner2 {
@@ -167,6 +172,7 @@ export default {
   background-image: url("./../../assets/graph_banner.jpg");
   background-size: cover;
   background-position: center;
+  animation: showBanner2 1s linear;
 }
 
 #banner3 {
@@ -176,6 +182,7 @@ export default {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: left;
+  animation: showBanner3 1s linear;
 }
 
 .container-fluid {
@@ -184,15 +191,34 @@ export default {
 
 .animatioShow {
   opacity: 0;
-  animation: showImage 5s linear infinite;
 }
 
-@keyframes showImage {
+@keyframes showBanner {
   0% {
-    opacity: 0;
+    opacity: 0.5;
   }
 
-  10% {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showBanner2 {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showBanner3 {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
     opacity: 1;
   }
 }
